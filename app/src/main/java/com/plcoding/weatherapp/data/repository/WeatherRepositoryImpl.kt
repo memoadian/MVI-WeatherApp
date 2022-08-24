@@ -20,7 +20,7 @@ class WeatherRepositoryImpl @Inject constructor(
             )
         } catch (e: Exception) {
             e.printStackTrace()
-            Resource.Error(e.message ?: "An uknown error ocurred")
+            Resource.Error(e.message ?: "An unknown error occurred")
         }
     }
 }

@@ -9,10 +9,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.vectorResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import java.time.format.DateTimeFormatter
+import kotlin.math.roundToInt
+import com.plcoding.weatherapp.R
 
 @Composable
 fun WeatherCard(
@@ -62,6 +67,30 @@ fun WeatherCard(
                     color = Color.White
                 )
                 Spacer(modifier = Modifier.height(16.dp))
+                Spacer(modifier = Modifier.width(4.dp))
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceAround
+                ) {
+                    WeatherDataDisplay(
+                        value = data.pressure.roundToInt(),
+                        unit = "hpa",
+                        icon = ImageVector.vectorResource(id = R.drawable.ic_pressure),
+                        textStyle = TextStyle(color = Color.White)
+                    )
+                    WeatherDataDisplay(
+                        value = data.humidity.roundToInt(),
+                        unit = "%",
+                        icon = ImageVector.vectorResource(id = R.drawable.ic_drop),
+                        textStyle = TextStyle(color = Color.White)
+                    )
+                    WeatherDataDisplay(
+                        value = data.windSpeed.roundToInt(),
+                        unit = "hpa",
+                        icon = ImageVector.vectorResource(id = R.drawable.ic_wind),
+                        textStyle = TextStyle(color = Color.White)
+                    )
+                }
             }
         }
     }
